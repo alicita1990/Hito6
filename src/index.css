@@ -1,0 +1,213 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color:  black;
+  text-decoration: inherit;
+}
+a:hover {
+  color: black;
+}
+
+
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: black;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+.banner-css{
+  background-image: "https://www.google.com/search?sca_esv=48b803f900d1ec24&rlz=1C5CHFA_enCL1116CL1116&q=imagenes+pizzas&udm=2&fbs=AEQNm0CbCVgAZ5mWEJDg6aoPVcBgWizR0-0aFOH11Sb5tlNhd7Qv31WAq-g3XdD7m281OKyew6CGJrEYYQ4lESOC_x5KKqqIgdEuCtaFgpfZ0um4excHSxxgtajqKJg37OAJ-hN99levLAjleNPAW_JoPC7PO6aXvOFl8C3v8MRxDI9nqSioOlvh9BbnBv3zU2eMNY1Bu2px5fjKtLBSPyGFvkmIrkOK2Q&sa=X&ved=2ahUKEwjWm47ivN-HAxXdIrkGHc-6MNgQtKgLegQIFRAB&biw=1440&bih=779&dpr=1#vhid=bj0uWSWlOI9cTM&vssid=mosaic";
+}
+
+.header-css{
+  background-image: url(./assets/—Pngtree—delicious\ pizza\ top\ view\ grainy_900663.jpg);
+}
+
+.card{
+
+  background-color: rgb(244, 218, 18);
+  padding: 2rem;
+  margin: 3rem;
+
+}
+
+
+.titulo{
+  font-size: 60px;
+  margin-top: 1 rem;
+}
+.divdemicard{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  
+}
+
+.text-center{
+  background-color: rgb(244, 218, 18);
+}
+
+body{
+  background-color: black;
+}
+
+.nav{
+  background-color: rgb(244, 218, 18);
+  margin-bottom: 50px;
+
+}
+.header {
+  background-image: url(./components/assets/ivan-torres-MQUqbmszGGM-unsplash.jpg);
+  height: 15rem;
+  padding: 3rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+h1{
+  font-size: 80px;
+  font-family: cursive;
+  color: rgb(244, 218, 18);
+}
+.mb-3{
+  justify-content: center;
+  width: 50rem;
+  background-color: rgb(244, 218, 18);
+  margin: top 50px;
+  padding: 1rem;
+}
+.caja {
+  display: flex;
+  background-color: rgb(244, 218, 18);
+  flex-direction: column;
+  justify-content: center;
+  padding: 10rem;
+
+}
+.boton{
+  width: 5rem;
+  margin-left: 20rem;
+}
+
+.form-control{
+  margin-top: 1rem;
+}
+
+h2{
+  color: rgb(244, 218, 18);
+  justify-content: center;
+  margin-left: 500px;
+}
+
+h3{
+  color: rgb(244, 218, 18);
+  justify-content: center;
+  margin-left: 500px;
+}
+.botonprecio{
+  display: flex;
+ flex-direction: column;
+  justify-content: center;
+  padding: 10rem;
+}
+
+.bodycards {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  gap: 1rem; 
+}
+
+.card {
+  flex: 1 1 calc(33.333% - 1rem);
+  box-sizing: border-box; 
+  margin-bottom: 1rem;
+}
+
+.not {
+  display: flex;
+  justify-content: center;
+  height: 900px;
+  background-image: url(../src/components/assets/gato.png);
+  background-repeat: no-repeat;
+  margin-left: 15rem;
+}
+
+.contprofile{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(244, 218, 18) ;
+  height: 500px;
+  padding: 2rem;
+  margin-left: 3rem;
+  
+}
+
+.imagenp{
+  height: 30rem;
+}
+
+.profile{
+  size:50px;
+  padding: 5rem;
+  border-color: 2px;
+  background-color: blue;
+}
+
+.recuadro{
+ 
+  width: 30rem;
+  border: solid;
+  border-color: black;
+  border-width: 3px;
+  margin: 2rem;
+  padding: 1rem;
+  margin-left: 10rem;
+
+  
+}
+
+.foto{
+  background-image: url(./components/assets/pizza2.jpg);
+  width: 100px;
+  height: 100px;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 60%;
+  margin-top: 3rem;
+}
+
+.recuadro1{
+  margin-left: 10rem;
+  font-size: 30px;
+}
+
