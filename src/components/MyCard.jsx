@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { CartContext } from './context/Cartcontext'; 
+import { Cartcontext } from './context/Cartcontext'; 
+import { Link } from 'react-router-dom'; 
+
+import { CartProvider } from './context/Cartcontext';
 
 const MyCard = ({ desc, id, img, ingredients, name, price }) => {
   const { addToCart, removeFromCart } = useContext(CartContext);
   return (
+    <CardProvider>
     <Card style={{ width: '9rem', margin: '20px' }}>
       <Card.Img variant="top" src={img} />
       <Card.Body >
@@ -22,13 +26,15 @@ const MyCard = ({ desc, id, img, ingredients, name, price }) => {
         <Button variant="dark" onClick={() => addToCart({ id, name, price, ingredients })}>
   +
 </Button>
-
-<Button variant="dark">detalles</Button>
+<Link to={`/pizza/${id}`}>
+            <Button variant="dark">detalles</Button>
+          </Link>
   
           <Button variant="dark" onClick={() => removeFromCart(id)}>-</Button>
         </div>
       </Card.Body>
     </Card>
+    </CardProvider>
   );
 }
 

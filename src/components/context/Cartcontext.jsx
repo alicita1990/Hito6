@@ -1,10 +1,9 @@
-
 import React, { createContext, useState } from 'react';
 import { pizzas } from '../pizzas'; 
 
-export const CartContext = createContext();
+const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
+const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (pizza) => {
@@ -64,9 +63,12 @@ export const CartProvider = ({ children }) => {
         incrementQuantity,
         decrementQuantity,
         getTotal,
+      
       }}
     >
       {children}
     </CartContext.Provider>
   );
 };
+
+export { CartProvider };
