@@ -7,6 +7,10 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+
+
+  
+
   const addToCart = (pizza) => {
     setCart((prevCart) => {
       const exists = prevCart.find((item) => item.id === pizza.id);

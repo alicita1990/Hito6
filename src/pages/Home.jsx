@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from '../components/Header';
 import MyCard from '../components/MyCard';
 
 function Home() {
   const [pizzas, setPizzas] = React.useState([]);
+
 
   useEffect(() => {
     fetch('http://localhost:5000/api/pizzas')
@@ -11,6 +12,7 @@ function Home() {
       .then(data => setPizzas(data))
       .catch(error => console.error('Error:', error));
   }, []);
+
 
   return (
     <div>

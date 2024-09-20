@@ -12,11 +12,12 @@ import { Route, Routes } from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar';
 import MyCard from './components/MyCard';
-
+import Pizza from './components/../pages/Pizza'
 
 function App() { 
     return (
         <>
+        
     <CartProvider>
       <MyNavbar />
       <Routes>
@@ -26,10 +27,11 @@ function App() {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="*" element={<Notfound />} />
-      </Routes>
+        <Route path="/Pizza/:id" element={<Pizza />} />
+        </Routes>
       <Footer />
     </CartProvider>
-        
+       
 </>
     );
 }

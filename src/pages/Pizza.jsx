@@ -1,44 +1,52 @@
-import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { ContextPizza } from '../components/context/ContexPizza'; 
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import { CartContext } from '../components/context/Cartcontext';
+import React, { useContext, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Pizza = () => {
-  const { id } = useParams(); 
-  const pizzas = useContext(ContextPizza); 
-  const { addToCart } = useContext(CartContext); 
+    const { id } = useParams(); 
+    const { data } = useContext(Pizzacontext);
+    const pizzadetalle = data.find ()
+    
+    const [pizza, setPizza] = useState(null);
 
-  if (!pizzas || pizzas.length === 0) {
-    return <p>Cargando detalles de la pizza...</p>;
-  }
+    const getPizza = async () => {
+        try {
+            const res = await fetch(`http://localhost:5000/api/pizzas/${id}`);
+            const pizzaData = await res.json();
+            setPizza(pizzaData);
+        } catch (error) {
+            console.error("Error al obtener la pizza:", error);
+        }
+    };
 
- 
-  const pizza = pizzas.find(pizza => pizza.id === parseInt(id, 10));
+    React.useEffect(() => {
+        getPizza();
+    }, []);
 
-  if (!pizza) {
-    return <p>No se encontraron detalles para esta pizza.</p>;
-  }
-  
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={pizza.img} />
-        <Card.Body>
-          <Card.Title>{pizza.name}</Card.Title>
-          <Card.Text>
-            {pizza.desc}
-            <br />
-            <strong>Ingredientes:</strong> {pizza.ingredients.join(', ')}
-            <br />
-            <strong>Precio:</strong> ${pizza.price}
-          </Card.Text>
-          <Button variant="dark" onClick={() => addToCart(pizza)}>Añadir al carrito</Button>
-        </Card.Body>
-      </Card>
-    </div>
-  );
-}
+    const Pizza = data.find(p => p.id === id);
+
+    return (
+        <div className='cardPizza'>
+            <Header />
+            <style>{`
+                .cardPizza {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+            `}</style>
+            {pizza && (
+                <MyCard 
+                    key={pizza.id}
+                    id={pizza.id}
+                    name={pizza.name}
+                    price={pizza.price}
+                    ingredients={pizza.ingredients}
+                    img={pizza.img}
+                    desc={pizza.desc}
+                />
+            )}
+        </div>
+    );
+};
 
 export default Pizza;
