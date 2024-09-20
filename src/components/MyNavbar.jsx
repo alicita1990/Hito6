@@ -7,12 +7,14 @@ import { CartContext } from './context/Cartcontext';
 import React, { useContext } from 'react'; 
 import Button from 'react-bootstrap/Button';
 import { FaCartPlus } from "react-icons/fa"; 
+import { UserContext } from './context/UserContext';
 
 
 
   function MyNavbar() {
     const { getTotal } = useContext(CartContext);
-
+    const { token, logout } = useContext(UserContext);  
+    const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
   return (
     <Navbar expand="lg" className="nav">
       <Container>
@@ -21,13 +23,16 @@ import { FaCartPlus } from "react-icons/fa";
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/Formulario">Formulario</Nav.Link>
-            <Nav.Link as={Link} to="/Login">Login</Nav.Link>
-            <Nav.Link as={Link} to="/Profile">Profile</Nav.Link>
+            <Nav.Link  className={setActiveClass} as={Link} to="/Formulario">Formulario</Nav.Link>
+            <Nav.Link  className={setActiveClass} as={Link} to="/Login">Login</Nav.Link>
+            <Nav.Link  className={setActiveClass} as={Link} to="/Profile">Profile</Nav.Link>
             <Nav.Link as={Link} to="/*"></Nav.Link>
-      
-    
-          </Nav>
+      </Nav>
+      {token ? (
+            <Button variant="danger" onClick={logout}>Cerrar sesión</Button>
+          ) : (
+            <span>Sesión cerrada</span>
+          )}
           <Link to="/Cart">
             <Button variant="dark">
               Total: ${getTotal()} <FaCartPlus style={{ marginLeft: '5px' }} />

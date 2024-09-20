@@ -13,12 +13,15 @@ import { NavItem } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar';
 import MyCard from './components/MyCard';
 import Pizza from './components/../pages/Pizza'
+import { UserProvider } from './components/context/Usercontext'; 
 
 function App() { 
     return (
         <>
         
     <CartProvider>
+        <UserProvider>
+      
       <MyNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -30,6 +33,7 @@ function App() {
         <Route path="/Pizza/:id" element={<Pizza />} />
         </Routes>
       <Footer />
+      </UserProvider>
     </CartProvider>
        
 </>

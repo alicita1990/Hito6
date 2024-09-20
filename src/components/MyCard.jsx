@@ -11,7 +11,7 @@ const MyCard = ({ desc, id, img, ingredients, name, price }) => {
   const verPizza = () => {
     navigate(`/Pizza/${id}`);  
   }
-  //  const {data} = useContext (Pizzacontext);
+ const {data} = useContext (CartContext);
 
   return (
     <Card style={{ width: '9rem', margin: '20px' }}>

@@ -1,15 +1,34 @@
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { pizzas } from '../pizzas'; 
 
-export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
+export const CartContext = createContext(); 
+
+
+export const CartProvider = ( { children }) => {
+  const [data, setData ] = useState ([])
   const [cart, setCart] = useState([]);
 
+useEffect(() => {
+  async function apiFetch () {
+    const response = await fetch('http://localhost:5000')
+    const data = await response.json ()
+    console.log (data)
+    setData (data)
+  }
+apiFetch ()
+
+}, [])
+ useEffect (()=> {
+console.log(data)
+ }, (data))
+
+const globalState = {
+  data
+}
 
 
-  
 
   const addToCart = (pizza) => {
     setCart((prevCart) => {
@@ -68,10 +87,12 @@ export const CartProvider = ({ children }) => {
         incrementQuantity,
         decrementQuantity,
         getTotal,
+        data,
+        setData,
       }}
     >
       {children}
     </CartContext.Provider>
   );
-};
 
+}

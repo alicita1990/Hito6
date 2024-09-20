@@ -1,52 +1,39 @@
-import React, { useContext, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import MyCard from '../components/MyCard';
+import { CartProvider } from '../components/context/Cartcontext';
 
 const Pizza = () => {
-    const { id } = useParams(); 
-    const { data } = useContext(Pizzacontext);
-    const pizzadetalle = data.find ()
-    
-    const [pizza, setPizza] = useState(null);
+  const { id } = useParams();
+ const { data } = useContext(CartProvider);
+  const [pizza, setPizza] = useState(null);
 
-    const getPizza = async () => {
-        try {
-            const res = await fetch(`http://localhost:5000/api/pizzas/${id}`);
-            const pizzaData = await res.json();
-            setPizza(pizzaData);
-        } catch (error) {
-            console.error("Error al obtener la pizza:", error);
-        }
-    };
+  useEffect(() => {
+    if (data && Array.isArray(data)) {
+      const pizzaToDisplay = data.find(p => p.id === parseInt(id, 10));
+      setPizza(pizzaToDisplay);
+    }
+  }, [data, id]);
 
-    React.useEffect(() => {
-        getPizza();
-    }, []);
-
-    const Pizza = data.find(p => p.id === id);
-
-    return (
-        <div className='cardPizza'>
-            <Header />
-            <style>{`
-                .cardPizza {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                }
-            `}</style>
-            {pizza && (
-                <MyCard 
-                    key={pizza.id}
-                    id={pizza.id}
-                    name={pizza.name}
-                    price={pizza.price}
-                    ingredients={pizza.ingredients}
-                    img={pizza.img}
-                    desc={pizza.desc}
-                />
-            )}
-        </div>
-    );
+  return (
+    <div className='cardPizza'>
+      <Header />
+      {pizza && (
+        <MyCard 
+          key={pizza.id}
+          id={pizza.id}
+          name={pizza.name}
+          price={pizza.price}
+          ingredients={pizza.ingredients}
+          img={pizza.img}
+          desc={pizza.desc}
+        />
+      )}
+    </div>
+  );
 };
 
 export default Pizza;
+
+
