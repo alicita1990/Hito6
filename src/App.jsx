@@ -12,30 +12,26 @@ import { Route, Routes } from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar';
 import MyCard from './components/MyCard';
-import { ContextProvider } from './components/context/ContexPizza';
-import Pizza from './pages/Pizza';
 
 
 function App() { 
-  return (
-      <>
-          <ContextProvider>
-              <CartProvider>
-                  <MyNavbar />
-                  <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/Formulario" element={<Formulario />} />
-                      <Route path="/Login" element={<Login />} />
-                      <Route path="/Cart" element={<Cart />} />
-                      <Route path="/Profile" element={<Profile />} />
-                      <Route path="*" element={<Notfound />} />
-                      <Route path="/pizza/:id" element={<Pizza />} /> 
-                  </Routes>
-                  <Footer />
-              </CartProvider>
-          </ContextProvider>
-      </>
-  );
+    return (
+        <>
+    <CartProvider>
+      <MyNavbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Formulario" element={<Formulario />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Cart" element={<Cart />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="*" element={<Notfound />} />
+      </Routes>
+      <Footer />
+    </CartProvider>
+        
+</>
+    );
 }
 
 export default App;
