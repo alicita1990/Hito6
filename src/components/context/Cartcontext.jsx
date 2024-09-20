@@ -12,7 +12,7 @@ export const CartProvider = ( { children }) => {
 
 useEffect(() => {
   async function apiFetch () {
-    const response = await fetch('http://localhost:5000')
+    const response = await fetch('http://localhost:5000/api/pizzas/${pizza_id}')
     const data = await response.json ()
     console.log (data)
     setData (data)

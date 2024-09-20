@@ -6,15 +6,16 @@ import { CartProvider } from '../components/context/Cartcontext';
 
 const Pizza = () => {
   const { id } = useParams();
- const { data } = useContext(CartProvider);
-  const [pizza, setPizza] = useState(null);
+ const { data } = useContext(Cartcontext);
+ const [pizza, setPizza] = useState(null);
 
-  useEffect(() => {
-    if (data && Array.isArray(data)) {
-      const pizzaToDisplay = data.find(p => p.id === parseInt(id, 10));
-      setPizza(pizzaToDisplay);
-    }
-  }, [data, id]);
+console.log (data)
+
+//     useEffect(() => {
+//          if (data && Array.isArray(data)) {
+//       const pizzaToDisplay = data.find(p => p.id === parseInt(id, 10));       setPizza(pizzaToDisplay);
+//     }
+//   }, [data, id]);
 
   return (
     <div className='cardPizza'>
