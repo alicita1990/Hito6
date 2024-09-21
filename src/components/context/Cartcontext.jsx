@@ -10,16 +10,22 @@ export const CartProvider = ( { children }) => {
   const [data, setData ] = useState ([])
   const [cart, setCart] = useState([]);
 
-useEffect(() => {
-  async function apiFetch () {
-    const response = await fetch('http://localhost:5000/api/pizzas/${pizza_id}')
-    const data = await response.json ()
-    console.log (data)
-    setData (data)
-  }
-apiFetch ()
+  useEffect(() => {
+    async function apiFetch() {
+      try {
+        const response = await fetch('http://localhost:5000/api/pizzas'); 
+        const data = await response.json();
+        console.log(data);
+        setData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
 
-}, [])
+    apiFetch();
+  }, []);
+
+  
  useEffect (()=> {
 console.log(data)
  }, (data))

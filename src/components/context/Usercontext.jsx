@@ -5,14 +5,14 @@ export const UserContext = createContext();
 
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState(true); 
 
   const login = () => {
     setToken(true);
   };
   
   const logout = () => {
-    setUser(null);
+    setUser(true);
   };
 
   return (

@@ -6,16 +6,21 @@ import { CartProvider } from '../components/context/Cartcontext';
 
 const Pizza = () => {
   const { id } = useParams();
- const { data } = useContext(Cartcontext);
- const [pizza, setPizza] = useState(null);
+  const { data } = useContext(CartProvider); 
+  const [pizza, setPizza] = useState(null);
 
-console.log (data)
 
-//     useEffect(() => {
-//          if (data && Array.isArray(data)) {
-//       const pizzaToDisplay = data.find(p => p.id === parseInt(id, 10));       setPizza(pizzaToDisplay);
-//     }
-//   }, [data, id]);
+
+  useEffect(() => {
+    console.log('Data received:', data);
+    console.log('Attempting to find pizza with ID:', id);
+
+    if (data && Array.isArray(data)) {
+      const pizzaToDisplay = data.find(p => p.id === parseInt(id, 10));
+      setPizza(pizzaToDisplay);
+    }
+  }, [data, id]);
+
 
   return (
     <div className='cardPizza'>
@@ -36,5 +41,3 @@ console.log (data)
 };
 
 export default Pizza;
-
-
