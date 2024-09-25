@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartProvider } from './components/context/Cartcontext';
+import { CartProvider } from './context/Cartcontext';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import  Footer from './components/Footer'
 import Formulario from './pages/Formulario'
@@ -13,7 +13,7 @@ import { NavItem } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar';
 import MyCard from './components/MyCard';
 import Pizza from './components/../pages/Pizza'
-import { UserProvider } from './components/context/Usercontext'; 
+import { UserProvider } from './context/Usercontext'; 
 
 function App() { 
     return (
