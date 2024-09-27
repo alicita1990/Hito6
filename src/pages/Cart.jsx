@@ -1,10 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/Cartcontext';
+import { UserContext } from '../context/Usercontext';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const Cart = () => {
   const { cart, incrementQuantity, decrementQuantity, getTotal } = useContext(CartContext);
+  const { token } = useContext(UserContext);
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch('/api/checkouts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ cart }),
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Compra realizada con éxito');
+      } else {
+        setSuccessMessage('Hubo un problema al realizar la compra.');
+      }
+    } catch (error) {
+      setSuccessMessage('Error al conectar con el servidor.');
+    }
+  };
 
   return (
     <div className='nuevobody'>
@@ -32,8 +56,9 @@ const Cart = () => {
       </div>
       <div className='botonprecio'>
         <h3>Total: ${getTotal()}</h3>
-        <Button variant="success">Pagar</Button>
+        <Button variant="success" onClick={handleCheckout}>Pagar</Button>
       </div>
+      {successMessage && <p>{successMessage}</p>}
     </div>
   );
 };

@@ -1,24 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { UserContext } from '../context/Usercontext';
 
 const Profile = () => {
+  const { user, logout } = useContext(UserContext);
+
   return (
-    <div className='contprofile'>
-
-
-
-<nav className='foto'> </nav>
-
-
-      <main>
-      <nav className='recuadro1'> profile </nav>
-      <nav className='recuadro'> nombre </nav>
-      <nav className='recuadro'> mail </nav>
-      </main>
-      
-  
-    
+    <div>
+      <h1>Profile</h1>
+      <p>Email: {user}</p>
+      <button onClick={logout}>Logout</button>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
