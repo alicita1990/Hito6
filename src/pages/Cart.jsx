@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../components/context/Cartcontext';
-import { pizzas } from '../components/pizzas'; 
+import { CartContext } from '../context/Cartcontext';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 

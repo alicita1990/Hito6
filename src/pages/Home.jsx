@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import MyCard from '../components/MyCard';
 
+
 function Home() {
   const [pizzas, setPizzas] = React.useState([]);
 

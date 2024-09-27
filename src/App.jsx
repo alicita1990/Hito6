@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartProvider } from './context/Cartcontext';
+import { CartProvider } from '../src/context/Cartcontext';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import  Footer from './components/Footer'
 import Formulario from './pages/Formulario'
@@ -12,8 +12,9 @@ import { Route, Routes } from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar';
 import MyCard from './components/MyCard';
-import Pizza from './components/../pages/Pizza'
-import { UserProvider } from './context/Usercontext'; 
+import { UserProvider } from './context/Usercontext';
+ 
+
 
 function App() { 
     return (
@@ -30,7 +31,6 @@ function App() {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="*" element={<Notfound />} />
-        <Route path="/Pizza/:id" element={<Pizza />} />
         </Routes>
       <Footer />
       </UserProvider>

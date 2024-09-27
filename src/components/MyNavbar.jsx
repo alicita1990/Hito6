@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { CartContext } from './context/Cartcontext';
-import { UserContext } from './context/UserContext';
+import { CartContext } from '../context/Cartcontext';
+import { UserContext } from '../context/Usercontext';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
+
 
 function MyNavbar() {
   const { getTotal } = useContext(CartContext);
@@ -21,19 +22,18 @@ function MyNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className={setActiveClass} as={Link} to="/Formulario">Formulario</Nav.Link>
-            <Nav.Link className={setActiveClass} as={Link} to="/Login">Login</Nav.Link>
-            <Nav.Link className={setActiveClass} as={Link} to="/Register">Register</Nav.Link>
-            <NavDropdown title="More Options" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/Profile">Profile</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/Settings">Settings</NavDropdown.Item>
-            </NavDropdown>
+          
+            {/* <Nav.Link className={setActiveClass} as={Link} to="/Register">Register</Nav.Link> */}
+          
           </Nav>
           {user ? (
             <>
+            <Link to ="/Formulario">
               <Button variant="danger" onClick={logout}>Logout</Button>
+            </Link>
+
               <Link to="/Profile">
-                <Button variant="outline-primary">
+                <Button variant="outline-primary" >
                   Profile
                 </Button>
               </Link>
@@ -43,7 +43,7 @@ function MyNavbar() {
               <Link to="/Login">
                 <Button variant="primary">Login</Button>
               </Link>
-              <Link to="/Register">
+              <Link to="/Formulario">
                 <Button variant="success">Register</Button>
               </Link>
             </>

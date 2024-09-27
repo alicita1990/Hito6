@@ -1,13 +1,9 @@
-
 import React, { createContext, useState, useEffect } from 'react';
-import { pizzas } from '../pizzas'; 
-
 
 export const CartContext = createContext(); 
 
-
-export const CartProvider = ( { children }) => {
-  const [data, setData ] = useState ([])
+export const CartProvider = ({ children }) => {
+  const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -25,16 +21,13 @@ export const CartProvider = ( { children }) => {
     apiFetch();
   }, []);
 
-  
- useEffect (()=> {
-console.log(data)
- }, (data))
+  useEffect(() => {
+    console.log(data);
+  }, [data]); 
 
-const globalState = {
-  data
-}
-
-
+  const globalState = {
+    data
+  };
 
   const addToCart = (pizza) => {
     setCart((prevCart) => {
@@ -100,5 +93,6 @@ const globalState = {
       {children}
     </CartContext.Provider>
   );
+};
 
-}
+export default CartContext; 
