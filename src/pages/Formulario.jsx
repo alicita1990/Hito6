@@ -12,11 +12,14 @@ const Register = () => {
   };
 
   return (
+    <div className='form'>
+    <h1>Registrate aqui!</h1>
     <form onSubmit={handleSubmit}>
       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Register</button>
+      <button className="botonformulario" type="submit">Registrame!</button>
     </form>
+    </div>
   );
 };
 

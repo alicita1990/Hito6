@@ -58,7 +58,7 @@ const Cart = () => {
         <h3>Total: ${getTotal()}</h3>
         <Button variant="success" onClick={handleCheckout}>Pagar</Button>
       </div>
-      {successMessage && <p>{successMessage}</p>}
+      {successMessage && <p className='alerta'>{successMessage}</p>}
     </div>
   );
 };

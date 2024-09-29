@@ -23,31 +23,17 @@ function MyNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
           
-            {/* <Nav.Link className={setActiveClass} as={Link} to="/Register">Register</Nav.Link> */}
-          
           </Nav>
-          {user ? (
-            <>
-            <Link to ="/Formulario">
-              <Button variant="danger" onClick={logout}>Logout</Button>
-            </Link>
-
-              <Link to="/Profile">
-                <Button variant="outline-primary" >
-                  Profile
-                </Button>
-              </Link>
-            </>
-          ) : (
+      
             <>
               <Link to="/Login">
-                <Button variant="primary">Login</Button>
+                <Button variant="dark" className='boton1'>Ingresar</Button>
               </Link>
               <Link to="/Formulario">
-                <Button variant="success">Register</Button>
+                <Button variant="dark"className='boton1'>Formulario de registo</Button>
               </Link>
             </>
-          )}
+          
           <Link to="/Cart">
             <Button variant="dark">
               Total: ${getTotal()} <FaCartPlus style={{ marginLeft: '5px' }} />

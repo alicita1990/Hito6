@@ -157,7 +157,7 @@ h3{
   display: flex;
   justify-content: center;
   height: 900px;
-  background-image: url(../src/components/assets/gato.png);
+  background-image: url(../src/assets/gato.png);
   background-repeat: no-repeat;
   margin-left: 15rem;
 }
@@ -211,3 +211,32 @@ h3{
   font-size: 30px;
 }
 
+.botonlogin{
+  background-color: rgb(244, 218, 18) ;
+  margin-left: 10px;
+}
+
+.botonformulario{
+  background-color: rgb(244, 218, 18) ;
+  margin-left: 10px;
+}
+
+.alerta{
+  color: rgb(244, 218, 18);
+  margin-left: 20px;
+}
+
+.login{
+  padding: 50px;
+  padding-left: 70px;
+}
+
+.form {
+  padding: 50px;
+  padding-left: 70px;
+}
+
+.boton1{
+  color: white;
+  margin: 1rem;
+}

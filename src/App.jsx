@@ -7,7 +7,6 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Notfound from './pages/Notfound';
-import Profile from './pages/Profile';
 import { Route, Routes } from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar';
@@ -29,7 +28,6 @@ function App() {
         <Route path="/Formulario" element={<Formulario />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Cart" element={<Cart />} />
-        <Route path="/Profile" element={<Profile />} />
         <Route path="*" element={<Notfound />} />
         </Routes>
       <Footer />
