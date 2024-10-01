@@ -22,18 +22,26 @@ function MyNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-          
+            {/* Aquí puedes agregar más enlaces si es necesario */}
           </Nav>
-      
+
+          {/* Botones de login y registro */}
+          {!user ? (
             <>
               <Link to="/Login">
                 <Button variant="dark" className='boton1'>Ingresar</Button>
               </Link>
               <Link to="/Formulario">
-                <Button variant="dark"className='boton1'>Formulario de registo</Button>
+                <Button variant="dark" className='boton1'>Formulario de registro</Button>
               </Link>
             </>
-          
+          ) : (
+            // Botón de logout si el usuario está autenticado
+            <Button variant="dark" className='boton1' onClick={logout}>
+              Cerrar Sesión
+            </Button>
+          )}
+
           <Link to="/Cart">
             <Button variant="dark">
               Total: ${getTotal()} <FaCartPlus style={{ marginLeft: '5px' }} />

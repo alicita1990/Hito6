@@ -13,35 +13,54 @@ export const UserProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       console.log("Login attempt:", email, password); // Depuración
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/Mamma-mia-router-1.git/api/auth/Login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
+
+      if (!response.ok) {
+        throw new Error('Error en el inicio de sesión'); // Lanza un error si la respuesta no es OK
+      }
+
+
       const data = await response.json();
       if (data.token) {
         setToken(data.token);
         setUser(email);
         console.log("Login successful:", email); // Depuración
       } else {
-        console.log("Login failed:", data.message); // Depuración
+        throw new Error(data.message || 'Error desconocido'); // Maneja el error si no hay token
       }
     } catch (error) {
       console.error("Login error:", error); // Depuración
+      throw error; // Lanza el error para manejarlo en el componente
     }
   };
   
   
   const register = async (email, password) => {
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    if (data.token) {
-      setToken(data.token);
-      setUser(email);
+    try {
+      const response = await fetch('/Mamma-mia-router-1.git/api/auth/Formulario', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en el registro'); // Lanza un error si la respuesta no es OK
+      }
+
+      const data = await response.json();
+      if (data.token) {
+        setToken(data.token);
+        setUser(email);
+      } else {
+        throw new Error(data.message || 'Error desconocido'); // Maneja el error si no hay token
+      }
+    } catch (error) {
+      console.error("Error en el registro:", error); // Depuración
+      throw error; // Lanza el error para manejarlo en el componente
     }
   };
   
