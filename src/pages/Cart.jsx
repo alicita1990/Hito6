@@ -17,7 +17,7 @@ const Cart = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/checkout', {
+      const response = await fetch('/api/checkouts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,15 +28,15 @@ const Cart = () => {
 
       if (response.ok) {
         setSuccessMessage('Compra realizada con éxito');
-        setErrorMessage(''); // Limpiar mensaje de error si la compra fue exitosa
+        setErrorMessage(''); 
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'Hubo un problema al realizar la compra.');
-        setSuccessMessage(''); // Limpiar mensaje de éxito si hay un error
+        setSuccessMessage(''); 
       }
     } catch (error) {
       setErrorMessage('Error al conectar con el servidor.');
-      setSuccessMessage(''); // Limpiar mensaje de éxito si hay un error
+      setSuccessMessage(''); 
     }
   };
 
@@ -66,10 +66,10 @@ const Cart = () => {
       </div>
       <div className='botonprecio'>
         <h3>Total: ${getTotal()}</h3>
-        <Button variant="success" onClick={handleCheckouts}>Pagar</Button>
+        <Button variant="success" onClick={handleCheckout}>Pagar</Button>
       </div>
       {successMessage && <p className='alerta'>{successMessage}</p>}
-      {errorMessage && <p className='alerta error'>{errorMessage}</p>} {/* Mensaje de error */}
+      {errorMessage && <p className='alerta error'>{errorMessage}</p>} 
     </div>
   );
 };
