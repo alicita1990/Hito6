@@ -8,10 +8,16 @@ const Cart = () => {
   const { cart, incrementQuantity, decrementQuantity, getTotal } = useContext(CartContext);
   const { token } = useContext(UserContext);
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleCheckout = async () => {
+    if (!token) {
+      setErrorMessage('Debes iniciar sesión para realizar la compra.');
+      return;
+    }
+
     try {
-      const response = await fetch('/api/checkouts', {
+      const response = await fetch('http://localhost:5000/api/auth/checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,11 +28,15 @@ const Cart = () => {
 
       if (response.ok) {
         setSuccessMessage('Compra realizada con éxito');
+        setErrorMessage(''); // Limpiar mensaje de error si la compra fue exitosa
       } else {
-        setSuccessMessage('Hubo un problema al realizar la compra.');
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || 'Hubo un problema al realizar la compra.');
+        setSuccessMessage(''); // Limpiar mensaje de éxito si hay un error
       }
     } catch (error) {
-      setSuccessMessage('Error al conectar con el servidor.');
+      setErrorMessage('Error al conectar con el servidor.');
+      setSuccessMessage(''); // Limpiar mensaje de éxito si hay un error
     }
   };
 
@@ -56,9 +66,10 @@ const Cart = () => {
       </div>
       <div className='botonprecio'>
         <h3>Total: ${getTotal()}</h3>
-        <Button variant="success" onClick={handleCheckout}>Pagar</Button>
+        <Button variant="success" onClick={handleCheckouts}>Pagar</Button>
       </div>
       {successMessage && <p className='alerta'>{successMessage}</p>}
+      {errorMessage && <p className='alerta error'>{errorMessage}</p>} {/* Mensaje de error */}
     </div>
   );
 };
